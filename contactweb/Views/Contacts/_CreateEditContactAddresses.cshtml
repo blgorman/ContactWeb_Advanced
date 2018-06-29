@@ -1,0 +1,90 @@
+﻿@using ContactWeb.ViewModels
+@model ContactWeb.ViewModels.CreateEditAddressContainerDTO
+
+<h1>Contact Addresses</h1>
+@Html.HiddenFor(model => model.ContactId, new {@id="currentContactId"})
+
+<!-- Grid of addresses -->
+<table id="contact_addresses" class="display dataTable">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Primary Phone</th>
+            <th>Secondary Phone</th>
+            <th>Address Line 1</th>
+            <th>Address Line 2</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Addresses)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhonePrimary)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneSecondary)</td>
+                <td>@Html.DisplayFor(modelItem => item.StreetAddress1)</td>
+                <td>@Html.DisplayFor(modelItem => item.StreetAddress2)</td>
+                <td>@Html.DisplayFor(modelItem => item.City)</td>
+                <td>@Html.DisplayFor(modelItem => item.StateName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Zip)</td>
+                <td>
+
+                    <button type="button" class="btn btn-primary btn-sm"
+                            data-toggle="modal" data-target="#createEditAddressModal"
+                            onclick="populateForm(@Model.ContactId, @item.Id, '@item.Email', '@item.PhonePrimary', '@item.PhoneSecondary'
+                                                    , '@item.StreetAddress1', '@item.StreetAddress2', '@item.City', '@item.StateId', '@item.Zip')">
+                        Edit
+                    </button> |
+                    @Html.ActionLink("Delete", "DeleteContactAddress"
+                                        , new DeleteContactAddressDTO { AddressId = item.Id, ContactId = item.ContactId }
+                                        , new { onclick = "return confirm('Are you sure you wish to delete this contact address?');" })
+                    @Html.HiddenFor(modelItem => item.Id)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#createEditAddressModal">
+    Add a new Address
+</button>
+
+@using (Html.BeginForm("CreateOrUpdateContactAddress", "Contacts", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div id="createEditAddressModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    @if (!string.IsNullOrWhiteSpace(Model.ContactDisplayName))
+                    {
+                        <h4 id="createEditAddressModalHeaderText" class="modal-title">Create a new address for @Model.ContactDisplayName</h4>
+                    }
+                    else
+                    {
+                        <h4 id="createEditAddressModalHeaderText"  class="modal-title">Create a new address</h4>
+                    }
+                </div>
+                <div class="modal-body">
+                    @Html.EditorFor(x => x.NewEditAddress)
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" value="Save New Address" class="btn btn-primary" />
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+}
+
+
+
+

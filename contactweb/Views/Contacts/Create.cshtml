@@ -1,0 +1,71 @@
+﻿@model ContactWeb.ViewModels.CreateEditContactDTO
+
+@{
+    ViewBag.Title = "Add a new Contact";
+}
+
+<h3>@ViewBag.Title</h3>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.HiddenFor(model => model.UserId, new { id = "UserId", Value = ViewBag.UserId })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Birthday, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Birthday, new { htmlAttributes = new { @class = "form-control needsDatePicker" } })
+                @Html.ValidationMessageFor(model => model.Birthday, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+        
+        <!-- Because we need a valid contact id, we could do addresses in memory or have one here
+             but another feasible option is to just get the thing working for create and allow address entry on edit.-->
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $(".needsDatePicker").datepicker();
+        });
+    </script>    
+}
+
