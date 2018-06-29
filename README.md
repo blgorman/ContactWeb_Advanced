@@ -1,0 +1,21 @@
+# ContactWeb_Advanced
+This is ContactWeb with advanced rework applied
+
+The first commit is all of the changes from the original ContactWeb applied to do the following
+1) separated db calls to a service
+2) created a models project for db work
+3) fixed issue with multiple db context by correcting namespaces
+4) Removed any unnecessary files from tracking
+5) updated to use SSL for facebook authentication
+6) Created viewmodels project to disconnect the db models from direct use on the views
+7) Added an address model, with relation to the original contact so the solution now allows for multiple contact addresses
+8) Demonstrated use of Partial views and editor templates
+9) Bootstrap modal integration
+
+In general, where the original course and code is a nice "starter" the advanced course and this codebase is much closer to what
+we would encounter and view in a real-world application.
+
+
+Things that are still missing that I would like to add in the future:
+1) Dependency Injection
+2) Automapper
