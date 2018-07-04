@@ -3,10 +3,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
 using ContactWeb.Models;
 using System.Configuration;
+using Hangfire;
 
 namespace ContactWeb
 {
@@ -64,6 +64,10 @@ namespace ContactWeb
             //    ClientId = "",
             //    ClientSecret = ""
             //});
+
+            GlobalConfiguration.Configuration.UseSqlServerStorage("ContactWebContext");
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
         }
     }
 }
