@@ -97,6 +97,9 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SendGrid, Version=9.8.0.0, Culture=neutral, PublicKeyToken=4f047e93159395ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sendgrid.9.9.0\lib\net452\SendGrid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -389,6 +392,10 @@
     <Content Include="Views\Contacts\EditorTemplates\CreateEditAddressDTO.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ContactWeb.Libraries\ContactWeb.Libraries.csproj">
+      <Project>{fb89c46b-2681-428b-bd35-6c986bfc10ee}</Project>
+      <Name>ContactWeb.Libraries</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ContactWeb.Models\ContactWeb.Models.csproj">
       <Project>{84562cf4-c708-4e2d-97da-82bd3df9ecdc}</Project>
       <Name>ContactWeb.Models</Name>
