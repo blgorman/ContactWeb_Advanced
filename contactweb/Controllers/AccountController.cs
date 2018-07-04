@@ -9,6 +9,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using ContactWeb.Models;
+using ContactWeb.Libraries;
+using Hangfire;
+using System.Configuration;
 
 namespace ContactWeb.Controllers
 {
@@ -159,9 +162,22 @@ namespace ContactWeb.Controllers
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    //await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //We'll use a hangfire "Fire and Forget" job
+                    BackgroundJob.Enqueue(() => Emailer.SendSingleRecipientEmail(new EmailInputDto
+                    {
+                        FromAddress = ConfigurationManager.AppSettings["EmailFrom"],
+                        FromFormalName = ConfigurationManager.AppSettings["EmailFormalFromName"],
+                        Subject = "Confirm your account",
+                        Body = $"Please confirm your account by clicking <a href=\"{callbackUrl}\">Confirm Account</a>",
+                        ToAddress = string.IsNullOrEmpty(ConfigurationManager.AppSettings["EmailToOverride"]) 
+                                                                ? user.Email 
+                                                                : ConfigurationManager.AppSettings["EmailToOverride"],
+                        ToFormalName = user.UserName
+                    }));
 
                     return RedirectToAction("Index", "Home");
                 }

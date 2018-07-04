@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactWeb.Service", "Conta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactWeb.ViewModels", "ContactWeb.ViewModels\ContactWeb.ViewModels.csproj", "{5987B312-CC91-473D-9533-A3F5029960A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContactWeb.Libraries", "ContactWeb.Libraries\ContactWeb.Libraries.csproj", "{FB89C46B-2681-428B-BD35-6C986BFC10EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5987B312-CC91-473D-9533-A3F5029960A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5987B312-CC91-473D-9533-A3F5029960A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5987B312-CC91-473D-9533-A3F5029960A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB89C46B-2681-428B-BD35-6C986BFC10EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB89C46B-2681-428B-BD35-6C986BFC10EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB89C46B-2681-428B-BD35-6C986BFC10EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB89C46B-2681-428B-BD35-6C986BFC10EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
