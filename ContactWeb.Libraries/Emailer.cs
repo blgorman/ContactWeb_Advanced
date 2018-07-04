@@ -7,7 +7,7 @@ namespace ContactWeb.Libraries
 {
     public class Emailer
     {
-        public static async Task Execute(EmailInputDto input)
+        public static async Task SendSingleRecipientEmail(EmailInputDto input)
         {
             var apiKey = ConfigurationManager.AppSettings["ContactWebSendgridKey"];
             var client = new SendGridClient(apiKey);
