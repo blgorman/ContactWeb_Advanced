@@ -133,6 +133,22 @@
     <Compile Include="Migrations\201801060502232_MakeBirthdayOptionalOnContact.Designer.cs">
       <DependentUpon>201801060502232_MakeBirthdayOptionalOnContact.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201807060016550_CreateElmahErrorTable.cs" />
+    <Compile Include="Migrations\201807060016550_CreateElmahErrorTable.Designer.cs">
+      <DependentUpon>201807060016550_CreateElmahErrorTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807060259046_CreateSprocElmahGetErrorsXml.cs" />
+    <Compile Include="Migrations\201807060259046_CreateSprocElmahGetErrorsXml.Designer.cs">
+      <DependentUpon>201807060259046_CreateSprocElmahGetErrorsXml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807060318227_CreateSprocElmahGetErrorXml.cs" />
+    <Compile Include="Migrations\201807060318227_CreateSprocElmahGetErrorXml.Designer.cs">
+      <DependentUpon>201807060318227_CreateSprocElmahGetErrorXml.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807060325472_CreateSprocElmahLogError.cs" />
+    <Compile Include="Migrations\201807060325472_CreateSprocElmahLogError.Designer.cs">
+      <DependentUpon>201807060325472_CreateSprocElmahLogError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbConfiguration.cs" />
     <Compile Include="Migrations\ContactWebConfiguration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -162,6 +178,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801060502232_MakeBirthdayOptionalOnContact.resx">
       <DependentUpon>201801060502232_MakeBirthdayOptionalOnContact.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060016550_CreateElmahErrorTable.resx">
+      <DependentUpon>201807060016550_CreateElmahErrorTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060259046_CreateSprocElmahGetErrorsXml.resx">
+      <DependentUpon>201807060259046_CreateSprocElmahGetErrorsXml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060318227_CreateSprocElmahGetErrorXml.resx">
+      <DependentUpon>201807060318227_CreateSprocElmahGetErrorXml.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807060325472_CreateSprocElmahLogError.resx">
+      <DependentUpon>201807060325472_CreateSprocElmahLogError.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
