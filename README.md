@@ -19,3 +19,15 @@ we would encounter and view in a real-world application.
 Things that are still missing that I would like to add in the future:
 1) Dependency Injection
 2) Automapper
+
+
+THINGS to do to get this project to work:
+1) Download/Clone, get the files from a release
+2) Remove the target for Roslyn CSC from the contactweb.csproj file [lines 453-459] 
+3) Set your connection strings and other private keys into the web.config file
+4) Run two update-database commands - 1 for each migration context [identity and web]
+	a) update-database -configurationtypename ContactWeb.Migrations.Identity.ApplicationDbConfiguration
+	b) update-database -configurationtypename ContactWeb.Migrations.ContactWebDb.ContactWebConfiguration
+	
+	
+Once you have completed those steps, you should be able to work with the project and review the sections on adding tools at will
